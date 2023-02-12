@@ -6,9 +6,8 @@ import { ProductCard } from '../../components';
 import { FilterBar } from './components/FilterBar';
 
 export const ProductsList = () => {
-  // const { productList } = useFilter();
+  const { products, initialProductList } = useFilter();
   const [show, setShow] = useState(false);
-  const [products, setProducts] = useState([]);
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get('q');
   useTitle('Explore eBooks Collection');
@@ -21,10 +20,10 @@ export const ProductsList = () => {
         }`
       );
       const data = await response.json();
-      setProducts(data);
+      initialProductList(data);
     }
     fetchProducts();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <main>
