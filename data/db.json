@@ -244,6 +244,12 @@
       "password": "$2a$10$H31Kdf9FYu3aI9NfZ3h7pubxBV43XRye6WZ9tkdK9iwNq87QKACYm",
       "name": "Ryan Azur",
       "id": 1
+    },
+    {
+      "email": "admin@kodego.ph",
+      "password": "$2a$10$yrH1zbSEBsBJd65JzhQn2u6yR5D7SKxQPySxYx6BYd5m73o8RVGLa",
+      "name": "admin",
+      "id": 2
     }
   ]
 }
