@@ -1,7 +1,29 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useCart } from '../../../context';
 
 export const Checkout = ({ setCheckout }) => {
   const { total } = useCart();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage.getItem('token'));
+    const cbid = JSON.parse(sessionStorage.getItem('cbid'));
+
+    async function getUser() {
+      const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setUser(data);
+    }
+
+    getUser();
+  }, []);
 
   return (
     <section>
@@ -53,7 +75,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="name"
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="Ryan Azur"
+                    value={user.name}
                     disabled
                     required=""
                   />
@@ -70,7 +92,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="ryanazur@gmail.com"
+                    value={user.email}
                     disabled
                     required=""
                   />
@@ -87,7 +109,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="card"
                     id="card"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="378282246310005"
+                    value="4215625462597845"
                     disabled
                     required=""
                   />
@@ -104,7 +126,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="month"
                     id="month"
                     className="inline-block w-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="04"
+                    value="03"
                     disabled
                     required=""
                   />
@@ -113,7 +135,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="year"
                     id="year"
                     className="inline-block w-20 ml-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="29"
+                    value="27"
                     disabled
                     required=""
                   />
@@ -130,7 +152,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="code"
                     id="code"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value="143"
+                    value="523"
                     disabled
                     required=""
                   />

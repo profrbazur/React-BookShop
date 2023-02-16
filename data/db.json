@@ -250,6 +250,12 @@
       "password": "$2a$10$yrH1zbSEBsBJd65JzhQn2u6yR5D7SKxQPySxYx6BYd5m73o8RVGLa",
       "name": "admin",
       "id": 2
+    },
+    {
+      "email": "bcruz@gmail.com",
+      "password": "$2a$10$wahrGqHhmbC5DhfRBxGSReoaOpiFHKKRPMo1br0H.HYMTDmtYClF6",
+      "name": "Benjamin Cruz",
+      "id": 3
     }
   ]
 }
