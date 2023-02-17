@@ -454,6 +454,12 @@
       "password": "$2a$10$NIY9SxfbeLBaJ/Dzu.u1QuQ0zOxRFN8W4/A1juFjyCUdJ/Z45III2",
       "name": "Demo User",
       "id": 4
+    },
+    {
+      "email": "aazur@gmail.com",
+      "password": "$2a$10$3T/4vSPQ4ZdP0R3wX27yi.GH9x5oqo6SV9Q5.jC5GOTGuWwKnIdfe",
+      "name": "Alden Azur",
+      "id": 5
     }
   ]
 }

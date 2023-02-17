@@ -9,13 +9,20 @@ export const Register = () => {
 
   async function handleRegister(event) {
     event.preventDefault();
-    const authDetail = {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-    };
-    const data = await register(authDetail);
-    data.accessToken ? navigate('/products') : toast.error(data);
+    try {
+      const authDetail = {
+        name: event.target.name.value,
+        email: event.target.email.value,
+        password: event.target.password.value,
+      };
+      const data = await register(authDetail);
+      data.accessToken ? navigate('/products') : toast.error(data);
+    } catch (error) {
+      toast.error(error.message, {
+        closeButton: true,
+        position: 'bottom-center',
+      });
+    }
   }
 
   return (
@@ -37,7 +44,7 @@ export const Register = () => {
             type="name"
             id="name"
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-            placeholder="Your Name"
+            placeholder="Full Name"
             required
             autoComplete="off"
           />
